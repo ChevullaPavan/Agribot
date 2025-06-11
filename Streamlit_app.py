@@ -6,7 +6,7 @@ import streamlit as st
 st.set_page_config(page_title="🌾 AgriBot - Smart Farming Assistant", page_icon="🌾")
 
 # --- Helper Data ---
-SOIL_TYPES = ["Sandy", "Clay", "Loamy", "Peaty", "Saline", "Silty"]
+SOIL_TYPES = ["Sandy", "Clay", "Loamy", "Peaty", "Saline", "Silty", "Red"]
 IRRIGATION_METHODS = ["Drip", "Sprinkler", "Flood", "Manual"]
 CROPS = ["Wheat", "Rice", "Maize", "Sugarcane", "Potato", "Cotton", "Soybean", "Groundnut"]
 
@@ -80,6 +80,10 @@ user_query = st.text_input("Ask me anything about crops, soil, weather, or pests
 
 def basic_qa(query):
     q = query.lower()
+    if "red soil" in q:
+        return ("Red soil is typically sandy to loamy in texture, rich in iron (which gives it the red color), "
+                "usually acidic, low in nitrogen, humus, and phosphorus, and best suited for crops like groundnut, "
+                "millets, potato, and cotton. It has good drainage but needs fertilization for high productivity.")
     if "winter" in q and "crop" in q:
         return "Best winter crops include Wheat, Mustard, and Barley."
     if "fertilizer" in q and "rice" in q:
